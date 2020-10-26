@@ -15,11 +15,10 @@ train_pipeline = [
 test_pipeline = [
     dict(type='Normalize', **img_norm_cfg),
     dict(type='ImageToTensor', keys=['img']),
-    dict(type='ToTensor', keys=['gt_label']),
-    dict(type='Collect', keys=['img', 'gt_label'])
+    dict(type='Collect', keys=['img'])
 ]
 data = dict(
-    samples_per_gpu=128,
+    samples_per_gpu=16,
     workers_per_gpu=2,
     train=dict(
         type=dataset_type, data_prefix='data/cifar10',
